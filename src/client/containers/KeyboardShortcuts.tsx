@@ -1,7 +1,5 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import prettier from 'prettier/standalone'
-import parserMarkdown from 'prettier/parser-markdown'
 
 import { useTempState } from '@/contexts/TempStateContext'
 import { Folder, Shortcuts } from '@/utils/enums'
@@ -92,21 +90,7 @@ export const KeyboardShortcuts: React.FC = () => {
     _toggleDarkTheme()
     _updateCodeMirrorOption('theme', darkTheme ? 'base16-light' : 'new-moon')
   }
-  const prettifyNoteHandler = () => {
-    // format current note with prettier
-    if (activeNote && activeNote.text) {
-      const formattedText = prettier.format(activeNote.text, {
-        parser: 'markdown',
-        plugins: [parserMarkdown],
-      })
-
-      const updatedNote = {
-        ...activeNote,
-        text: formattedText,
-      }
-
-      dispatch(updateNote(updatedNote))
-    }
+  const prettifyNoteHandler = () => {    
   }
 
   // ===========================================================================
