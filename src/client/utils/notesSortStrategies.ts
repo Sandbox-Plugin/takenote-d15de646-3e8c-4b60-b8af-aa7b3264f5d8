@@ -50,5 +50,10 @@ export const sortStrategyMap: { [key in NotesSortKey]: NotesSortStrategy } = {
   [NotesSortKey.CREATED_DATE]: createdDate,
 }
 
-export const getNotesSorter = (notesSortKey: NotesSortKey) =>
-  withFavorites(sortStrategyMap[notesSortKey].sort)
+export const getNotesSorter = (notesSortKey: NotesSortKey) => {
+  if (sortStrategyMap[notesSortKey]) {
+      return withFavorites(sortStrategyMap[notesSortKey]?.sort)
+  }
+
+  return withFavorites(sortStrategyMap[NotesSortKey.LAST_UPDATED]?.sort)
+}
