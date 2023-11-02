@@ -52,9 +52,9 @@ export const TakeNoteApp: React.FC = () => {
   const _loadCategories = () => dispatch(loadCategories())
   const _loadSettings = () => dispatch(loadSettings())
   const _swapCategories = (categoryId: number, destinationId: number) =>
-    dispatch(swapCategories({ categoryId, destinationId }))
+      dispatch(swapCategories({ categoryId, destinationId }))
   const _sync = (notes: NoteItem[], categories: CategoryItem[]) =>
-    dispatch(sync({ notes, categories }))
+      dispatch(sync({ notes, categories }))
 
   // ===========================================================================
   // Handlers
@@ -89,28 +89,28 @@ export const TakeNoteApp: React.FC = () => {
   useBeforeUnload((event: BeforeUnloadEvent) => (pendingSync ? event.preventDefault() : null))
 
   return (
-    <HelmetProvider>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>{getWebsiteTitle(activeFolder, activeCategory)}</title>
-        <link rel="canonical" href="https://takenote.dev" />
-      </Helmet>
+      <HelmetProvider>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>{getWebsiteTitle(activeFolder, activeCategory)}</title>
+          <link rel="canonical" href="https://takenote.dev" />
+        </Helmet>
 
-      <TempStateProvider>
-        <div className={determineAppClass(darkTheme, sidebarVisible, activeFolder)}>
-          <DragDropContext onDragEnd={onDragEnd}>
-            <SplitPane split="vertical" minSize={150} maxSize={500} defaultSize={240}>
-              <AppSidebar />
-              <SplitPane split="vertical" {...getNoteBarConf(activeFolder)}>
-                <NoteList />
-                <NoteEditor />
+        <TempStateProvider>
+          <div className={determineAppClass(darkTheme, sidebarVisible, activeFolder)}>
+            <DragDropContext onDragEnd={onDragEnd}>
+              <SplitPane split="vertical" minSize={150} maxSize={500} defaultSize={240}>
+                <AppSidebar />
+                <SplitPane split="vertical" {...getNoteBarConf(activeFolder)}>
+                  <NoteList />
+                  <NoteEditor />
+                </SplitPane>
               </SplitPane>
-            </SplitPane>
-          </DragDropContext>
-          <KeyboardShortcuts />
-          <SettingsModal />
-        </div>
-      </TempStateProvider>
-    </HelmetProvider>
+            </DragDropContext>
+            <KeyboardShortcuts />
+            <SettingsModal />
+          </div>
+        </TempStateProvider>
+      </HelmetProvider>
   )
 }
