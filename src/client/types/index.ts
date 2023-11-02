@@ -8,27 +8,27 @@ import { sync } from '@/slices/sync'
 //==============================================================================
 
 export interface NoteItem {
-  id: string
-  text: string
-  created: string
-  lastUpdated: string
-  /**
-   * Refers to the category UUID and not the actual name.
-   */
-  category?: string
-  scratchpad?: boolean
-  trash?: boolean
-  favorite?: boolean
+    id: string
+    text: string
+    created: string
+    lastUpdated: string
+    /**
+     * Refers to the category UUID and not the actual name.
+     */
+    category?: string
+    scratchpad?: boolean
+    trash?: boolean
+    favorite?: boolean
 }
 
 export interface CategoryItem {
-  id: string
-  name: string
-  draggedOver: boolean
+    id: string
+    name: string
+    draggedOver: boolean
 }
 
 export interface GithubUser {
-  [anyProp: string]: any
+    [anyProp: string]: any
 }
 
 //==============================================================================
@@ -36,56 +36,63 @@ export interface GithubUser {
 //==============================================================================
 
 export interface AuthState {
-  loading: boolean
-  currentUser: GithubUser
-  isAuthenticated: boolean
-  error?: string
+    loading: boolean
+    currentUser: GithubUser
+    isAuthenticated: boolean
+    error?: string
 }
 
 export interface CategoryState {
-  categories: CategoryItem[]
-  error: string
-  loading: boolean
-  editingCategory: {
-    id: string
-    tempName: string
-  }
+    categories: CategoryItem[]
+    error: string
+    loading: boolean
+    editingCategory: {
+        id: string
+        tempName: string
+    }
 }
 
 export interface NoteState {
-  notes: NoteItem[]
-  activeFolder: Folder
-  activeNoteId: string
-  selectedNotesIds: string[]
-  activeCategoryId: string
-  error: string
-  loading: boolean
-  searchValue: string
+    notes: NoteItem[]
+    activeFolder: Folder
+    activeNoteId: string
+    selectedNotesIds: string[]
+    activeCategoryId: string
+    error: string
+    loading: boolean
+    searchValue: string
+}
+
+export const ThemeModes = {
+    DARK: 'DARK',
+    LIGHT: 'LIGHT',
+    SYNC_BY_SYSTEM: 'SYNC_BY_SYSTEM',
 }
 
 export interface SettingsState {
-  isOpen: boolean
-  previewMarkdown: boolean
-  loading: boolean
-  darkTheme: boolean
-  sidebarVisible: boolean
-  notesSortKey: NotesSortKey
-  codeMirrorOptions: { [key: string]: any }
+    isOpen: boolean
+    previewMarkdown: boolean
+    loading: boolean
+    darkTheme: boolean
+    themeMode: string
+    sidebarVisible: boolean
+    notesSortKey: NotesSortKey
+    codeMirrorOptions: { [key: string]: any }
 }
 
 export interface SyncState {
-  syncing: boolean
-  lastSynced: string
-  error: string
-  pendingSync: boolean
+    syncing: boolean
+    lastSynced: string
+    error: string
+    pendingSync: boolean
 }
 
 export interface RootState {
-  authState: AuthState
-  categoryState: CategoryState
-  noteState: NoteState
-  settingsState: SettingsState
-  syncState: SyncState
+    authState: AuthState
+    categoryState: CategoryState
+    noteState: NoteState
+    settingsState: SettingsState
+    syncState: SyncState
 }
 
 //==============================================================================
@@ -93,13 +100,13 @@ export interface RootState {
 //==============================================================================
 
 export interface SyncPayload {
-  categories: CategoryItem[]
-  notes: NoteItem[]
+    categories: CategoryItem[]
+    notes: NoteItem[]
 }
 
 export interface SyncAction {
-  type: typeof sync.type
-  payload: SyncPayload
+    type: typeof sync.type
+    payload: SyncPayload
 }
 
 //==============================================================================
@@ -109,9 +116,9 @@ export interface SyncAction {
 export type ReactDragEvent = React.DragEvent<HTMLDivElement>
 
 export type ReactMouseEvent =
-  | MouseEvent
-  | React.MouseEvent<HTMLDivElement>
-  | React.ChangeEvent<HTMLSelectElement>
+    | MouseEvent
+    | React.MouseEvent<HTMLDivElement>
+    | React.ChangeEvent<HTMLSelectElement>
 
 export type ReactSubmitEvent = React.FormEvent<HTMLFormElement> | React.FocusEvent<HTMLInputElement>
 
@@ -121,5 +128,5 @@ export type ReactSubmitEvent = React.FormEvent<HTMLFormElement> | React.FocusEve
 
 // Taken from TypeScript private declared type within Actions
 export type WithPayload<P, T> = T & {
-  payload: P
+    payload: P
 }
