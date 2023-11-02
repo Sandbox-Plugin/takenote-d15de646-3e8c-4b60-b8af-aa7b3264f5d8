@@ -44,6 +44,27 @@
     }
   }
 
+  .primary .selected {
+    background: $primary;
+  }
+  .red .selected {
+    background: $red;
+  }
+  .green .selected {
+    background: $green;
+  }
+  .orange .selected {
+    background: $orange;
+  }
+  .yellow .selected {
+    background: $yellow;
+  }
+  .purple .selected {
+    background: $purple;
+  }
+  .blue .selected {
+    background: $primary;
+  }
   .note-list {
     &-outer {
       display: flex;
@@ -105,9 +126,8 @@
       }
 
       &.selected {
-        background: $primary;
         color: white;
-        border-bottom: 1px solid darken($primary, 5%);
+        border-bottom: 1px solid transparent;
 
         .note-category {
           color: rgba(255, 255, 255, 0.6);

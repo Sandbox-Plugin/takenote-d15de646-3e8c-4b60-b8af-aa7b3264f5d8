@@ -60,6 +60,31 @@
     font-size: 0.7rem;
     font-weight: 400;
   }
+
+  .note-menu-bar-section-colors {
+    position: relative;
+    top: 6px;
+
+    .color-box {
+      position: absolute;
+      width: 30px;
+      height: 100px;
+      bottom: 89px;
+      left: 10px;
+
+      .color-option {
+        background-color: blue;
+        width: 19px;
+        height: 20%;
+        border-radius: 27px;
+        margin: 5px 0;
+
+        &:hover {
+          background-color: darken($note-sidebar-color, 10%);
+        }
+      }
+    }
+  }
 }
 
 .note-menu-bar {
