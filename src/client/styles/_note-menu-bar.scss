@@ -80,6 +80,7 @@
         margin: 5px 0;
 
         &:hover {
+          cursor: pointer;
           background-color: darken($note-sidebar-color, 10%);
         }
       }
